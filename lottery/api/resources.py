@@ -14,7 +14,9 @@ class Create_Game(Resource):
         if not UserTable.find_user(data.get("email")):
             user = UserTable(**data)
             user.create_user()
-        
+        # todo 
+        # define a better way to generate the numbers,
+        # and find a way to not repeat numbers in the same game
         a = randint(1,60)
         b = randint(1,60)
         c = randint(1,60)
