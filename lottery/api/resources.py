@@ -1,5 +1,4 @@
 import sqlite3
-from random import randint
 from flask_restful import Resource, reqparse
 from lottery.db.models import UserTable, LotteryTable
 from lottery.api.filters import *
@@ -14,20 +13,8 @@ class Create_Game(Resource):
         if not UserTable.find_user(data.get("email")):
             user = UserTable(**data)
             user.create_user()
-        # todo 
-        # define a better way to generate the numbers,
-        # and find a way to not repeat numbers in the same game
-        a = randint(1,60)
-        b = randint(1,60)
-        c = randint(1,60)
-        d = randint(1,60)
-        e = randint(1,60)
-        f = randint(1,60)
-        g = randint(1,60)
-        h = randint(1,60)
-        i = randint(1,60)
-        j = randint(1,60)
-        lotto_numbers = "{},{},{},{},{},{},{},{},{},{}".format(a,b,c,d,e,f,g,h,i,j)
+
+        lotto_numbers = LotteryTable.generate_lotto_ticket()
         game = LotteryTable(game_numbers=lotto_numbers, email=data.get('email'))
         try:
             game.save_lotto()

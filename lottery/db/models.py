@@ -1,3 +1,4 @@
+import random
 from lottery.db import db
 
 class UserTable(db.Model):
@@ -55,4 +56,8 @@ class LotteryTable(db.Model):
             return user
         return None
 
-        
+    def generate_lotto_ticket():
+        numbers = random.sample(range(1, 61), 10)
+        game = "{}".format(numbers)
+        ticket = game.strip("[]")
+        return ticket
