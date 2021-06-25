@@ -1,4 +1,3 @@
-from re import LOCALE
 from lottery.db.models import LotteryTable
 from lottery.db import db
 from tests.util import lottery_ticket

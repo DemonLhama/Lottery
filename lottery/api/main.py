@@ -1,6 +1,7 @@
 from flask_restful import Api
 from flask import Blueprint
-from lottery.api.resources import Create_Game, FindUser
+from lottery.api.lottery_resources import Create_Game
+from lottery.api.user_resources import FindUser
 
 api_bp = Blueprint("api", __name__)
 api = Api(api_bp)
